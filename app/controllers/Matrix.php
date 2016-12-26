@@ -1,6 +1,6 @@
 <?php
 
-class MatrixController extends BaseController 
+class Matrix extends BaseController 
 {
 	private $n;
 	private $matrix;
@@ -24,6 +24,7 @@ class MatrixController extends BaseController
 	public function update($i, $j, $k, $value)
 	{
 		$this->matrix[$i - 1][$j - 1][$k - 1] = (int) $value;
+		return 'OK';
 	}
 
 	public function sum($x2, $y2, $z2, $x1, $y1, $z1)
