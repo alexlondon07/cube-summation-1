@@ -11,7 +11,7 @@
 |
 */
 
-Route::post('update', 'MatrixController@update');
+Route::post('handle', 'HandlerController@handle');
 
 
 Route::get('/', function()
