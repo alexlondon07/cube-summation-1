@@ -51,6 +51,13 @@ QUERY 2 2 2 2 2 2
 					</pre>
 				</div>
 			</div>
+			<hr />
+			<div class="row">
+				<div class="col-md-6">
+					<h1> Result section </h1>
+					@yield('result')
+				</div>
+			</div>
 
 		</div>
 	</div>

@@ -14,7 +14,7 @@ class HandlerController extends BaseController{
 
 	public function handle()
 	{
-		$response = '';
+		$response = array();
 
 		$input = Input::get('input');
 		
@@ -35,26 +35,27 @@ class HandlerController extends BaseController{
 
 				$line = strtok($separator);
 
-				$this->processCommandLine($line);
+				$response[] = $this->processCommandLine($line);
+
 			}
 
 		}
+
+		return View::make('result', array('items' => $response));
 
 	}
 
 	public function executeCommand($command, $params)
 	{
-		$response = '';
+		$response = null;
 		
 		if($command == "UPDATE")
 		{
-			$response = $this->update($params);
+			$this->update($params);
 		}
 		else 
 		{
 			$response = $this->sum($params);
-			echo $response;
-			echo "<br/>";
 		}
 
 		return $response; 
@@ -97,6 +98,8 @@ class HandlerController extends BaseController{
 		$params = $this->setParams($command, $params, array_slice($tokens, 1));
 
 		$response = $this->executeCommand($command, $params);
+
+		return $response;
 	}
 
 	private function setParams($command, $params, $payload)
